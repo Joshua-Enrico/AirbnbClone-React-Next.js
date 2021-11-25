@@ -8,7 +8,6 @@ import LargeCard from '../components/nearbycomponents/LargeCard'
 import Footer from '../components/footer/Footer'
 
 export default function Home({ exploreData, cardsData, largeCard }) {
-  console.log(largeCard)
   const scrollRef = useHorizontalScroll();
   return (
     <div className="">
@@ -64,14 +63,14 @@ export default function Home({ exploreData, cardsData, largeCard }) {
 }
 // Get Custom Data from Api
 export async function getStaticProps() {
-  const exploreData = await fetch('http://localhost:3000/api/locations').
+  const exploreData = await fetch('https://air-bn-b-api-nextjs-781s3m466-yoyogold-a11.vercel.app/api/locations').
     then(
       (response) => response.json()
     )
-  const cardsData = await fetch('http://localhost:3000/api/cards').
+  const cardsData = await fetch('https://air-bn-b-api-nextjs-781s3m466-yoyogold-a11.vercel.app/api/cards').
     then(response => response.json())
 
-  const largeCard = await fetch('http://localhost:3000/api/largecard').
+  const largeCard = await fetch('https://air-bn-b-api-nextjs-781s3m466-yoyogold-a11.vercel.app/api/largecard').
     then(response => response.json())
   return {
     props: {
