@@ -4,9 +4,11 @@ import MediumCard from '../components/cardsdata/MediumCard'
 import Header from '../components/header/Header'
 import SmallCard from '../components/nearbycomponents/SmallCard'
 import { useHorizontalScroll } from "../components/functions/scroll"
+import LargeCard from '../components/nearbycomponents/LargeCard'
+import Footer from '../components/footer/Footer'
 
-export default function Home({ exploreData, cardsData }) {
-  
+export default function Home({ exploreData, cardsData, largeCard }) {
+  console.log(largeCard)
   const scrollRef = useHorizontalScroll();
   return (
     <div className="">
@@ -38,16 +40,25 @@ export default function Home({ exploreData, cardsData }) {
           </h2>
           <div ref={scrollRef} className="flex space-x-3 overflow-scroll 
           scrollbar-hide p-3 -ml-3">
-          { cardsData?.map(({img, title}) => (
-            <MediumCard 
-            key={img}
-            img={img}
-            title={title}
-            />
-          )) }
+            {cardsData?.map(({ img, title }) => (
+              <MediumCard
+                key={img}
+                img={img}
+                title={title}
+              />
+            ))}
           </div>
         </section>
+        <LargeCard
+          img={largeCard.img}
+          title={largeCard.title}
+          description={largeCard.description}
+          buttonText={largeCard.buttonText}
+        />
       </main>
+      <footer>
+        <Footer />
+      </footer>
     </div>
   )
 }
@@ -60,10 +71,13 @@ export async function getStaticProps() {
   const cardsData = await fetch('http://localhost:3000/api/cards').
     then(response => response.json())
 
+  const largeCard = await fetch('http://localhost:3000/api/largecard').
+    then(response => response.json())
   return {
     props: {
       exploreData,
       cardsData,
+      largeCard
     }
   }
 }
