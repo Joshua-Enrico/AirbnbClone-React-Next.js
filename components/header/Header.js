@@ -28,9 +28,12 @@ function Header() {
 
     });
 
+    
     const resetInput = () => {
         setSearchInput('')
+        setExpand('')
     }
+
 
     const selectionRange = {
         startDate: startDate,
