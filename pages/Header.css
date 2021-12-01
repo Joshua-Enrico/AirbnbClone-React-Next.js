@@ -1,0 +1,14 @@
+.rdrCalendarWrapper {
+    border-radius: 0 20px 20px 0;
+}
+
+.rdrDefinedRangesWrapper {
+    border-radius: 20px 0 0 20px;
+}
+
+.rdrStaticRange {
+    border-radius: 20px;
+}
+.rdrDateDisplayWrapper {
+    border-radius: 0 20px 0 0;
+}
