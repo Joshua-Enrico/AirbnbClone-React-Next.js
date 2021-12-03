@@ -6,7 +6,9 @@
     "start": "next start"
   },
   "dependencies": {
+    "@badrap/bar-of-progress": "^0.1.2",
     "@heroicons/react": "^1.0.5",
+    "@tanem/react-nprogress": "^3.0.82",
     "date-fns": "^2.27.0",
     "framer-motion": "^5.3.3",
     "next": "latest",
@@ -14,7 +16,8 @@
     "react-date-range": "^1.4.0",
     "react-dom": "^17.0.2",
     "react-use": "^17.3.1",
-    "tailwind-scrollbar-hide": "^1.1.6"
+    "tailwind-scrollbar-hide": "^1.1.6",
+    "zustand": "^3.6.6"
   },
   "devDependencies": {
     "autoprefixer": "^10.2.6",

@@ -5,14 +5,29 @@ import 'react-date-range/dist/styles.css'; // main style file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import { DateRangePicker } from 'react-date-range';
 import { useClickAway } from "react-use";
+import { useRouter } from 'next/router'
 
-
-function Header() {
+function Header({ FLAG , placeholder }) {
     const [searchInput, setSearchInput] = useState('')
     const [expand, setExpand] = useState('')
     const [startDate, setStartDate] = useState(new Date())
     const [endDate, setEndDate] = useState(new Date())
     const [nOfGuests, setNOfGuests] = useState(1)
+    const router = useRouter()
+
+    const search = () => {
+            router.push({
+                pathname: "/search",
+                query: {
+                    location: searchInput,
+                    startDate: startDate.toISOString(),
+                    endDate: endDate.toISOString(),
+                    nOfGuests,
+
+                }
+            })
+    }
+
 
     function HandleClose(value) {
         setSearchInput(value)
@@ -28,7 +43,7 @@ function Header() {
 
     });
 
-    
+
     const resetInput = () => {
         setSearchInput('')
         setExpand('')
@@ -49,14 +64,18 @@ function Header() {
         window.onscroll = function () {
             ResponsiveBar();
         }
-        if (expand) {
-            add()
-        } else {
-            if (
-                document.documentElement.scrollTop < 10
-            ) {
-                del()
+        if (!FLAG) {
+            if (expand) {
+                add()
+            } else {
+                if (
+                    document.documentElement.scrollTop < 10
+                ) {
+                    del()
+                }
             }
+        } else {
+            add()
         }
     })
 
@@ -86,6 +105,10 @@ function Header() {
         MenuIcon.classList.add("text-gray-500");
         UserIcon.classList.remove("text-gray-50");
         UserIcon.classList.add("text-gray-500");
+        if(FLAG){
+        header.classList.remove('fixed');
+        header.classList.add('sticky');
+        }
 
 
     }
@@ -130,7 +153,9 @@ function Header() {
             }
         } else {
             if (!expand) {
+                if(!FLAG){
                 del()
+                }
             }
         }
 
@@ -143,7 +168,7 @@ function Header() {
         shadow-md p-8 md:px-10 transform duration-300 px-8' >
 
             {/* Left */}
-            <div className='relative flex 
+            <div onClick={() => router.push("/")} className='relative flex 
             items-center h-10 cursor-pointer 
             my-auto'>
                 <Image
@@ -166,9 +191,10 @@ function Header() {
                 text-gray-50 
                 placeholder-gray-50'
                     type='text'
-                    placeholder='Start Your Search' />
+                    autoComplete="off"
+                    placeholder={ placeholder || "Start Your Search"} />
 
-                <SearchIcon className='hidden md:inline-flex 
+                <SearchIcon onClick={search} className='hidden md:inline-flex 
                 h-8 bg-red-400 text-gray-50 rounded-full
                 p-2 cursor-pointer md:mx-2'/>
             </div>
@@ -206,7 +232,7 @@ function Header() {
 
                 <div className="flex bg-white rounded-b-[20px]">
                     <button onClick={resetInput} className="flex-grow text-gray-500 p-2">Cancel</button>
-                    <button className="flex-grow text-red-400">Search</button>
+                    <button onClick={search} className="flex-grow text-red-400">Search</button>
                 </div>
             </div>
             )}

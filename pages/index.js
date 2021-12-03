@@ -63,14 +63,14 @@ export default function Home({ exploreData, cardsData, largeCard }) {
 }
 // Get Custom Data from Api
 export async function getStaticProps() {
-  const exploreData = await fetch('https://air-bn-b-api-nextjs-781s3m466-yoyogold-a11.vercel.app/api/locations').
+  const exploreData = await fetch('https://air-bn-b-api-nextjs.vercel.app/api/locations').
     then(
       (response) => response.json()
     )
-  const cardsData = await fetch('https://air-bn-b-api-nextjs-781s3m466-yoyogold-a11.vercel.app/api/cards').
+  const cardsData = await fetch('https://air-bn-b-api-nextjs.vercel.app/api/cards').
     then(response => response.json())
 
-  const largeCard = await fetch('https://air-bn-b-api-nextjs-781s3m466-yoyogold-a11.vercel.app/api/largecard').
+  const largeCard = await fetch('https://air-bn-b-api-nextjs.vercel.app/api/largecard').
     then(response => response.json())
   return {
     props: {
