@@ -12,8 +12,8 @@ export default function Home({ exploreData, cardsData, largeCard }) {
   return (
     <div className="">
       <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
+        <title>Airbnb Clone</title>
+        <link rel="icon" href="/aibnb.png" />
       </Head>
       <Header />
       <Banner />
@@ -80,5 +80,3 @@ export async function getStaticProps() {
     }
   }
 }
-// https://links.papareact.com/pyp
-// https://jsonkeeper.com/b/VHHT

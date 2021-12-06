@@ -2,12 +2,11 @@ import Header from '../components/header/Header';
 import Footer from '../components/footer/Footer';
 import { useRouter } from 'next/router';
 import { format } from "date-fns"
-import InfoCards from '../components/Infocards/InfoCard';
 import InfoCard from '../components/Infocards/InfoCard';
-
+import Map from '../components/map/Map';
+import Gmap from '../components/map/Gmap';
 
 function Search({ searchResults }) {
-    console.log(searchResults)
     const router = useRouter();
 
     // ES6 destructuring
@@ -51,6 +50,11 @@ function Search({ searchResults }) {
                         ))}
                     </div>
 
+                </section>
+                <section className="hidden xl:inline-flex xl:min-w-[600px]">
+                    <Gmap
+                    searchResults={searchResults}
+                    />
                 </section>
             </main>
             <Footer />
