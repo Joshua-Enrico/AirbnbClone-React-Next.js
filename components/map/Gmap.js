@@ -38,7 +38,7 @@ function Gmap({ searchResults }) {
             mapContainerStyle={containerStyle}
             defaultCenter={{ lat: center.latitude, lng: center.longitude }}
             center={{ lat: center.latitude, lng: center.longitude }}
-            zoom={12}
+            zoom={11}
 
         >
             {searchResults.map((item) => (

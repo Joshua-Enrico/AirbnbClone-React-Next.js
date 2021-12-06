@@ -17,12 +17,12 @@ function Search({ searchResults }) {
     const range = `${formattedStarDate} - ${formattedEndDate}`
 
     return (
-        <div >
+        <div className="">
             <Header
                 placeholder={`${location} | ${range} | ${nOfGuests}`}
                 FLAG={1} />
             <main className="flex">
-                <section className="flex-grow pt-14 px-6">
+                <section className="flex-grow max-h-[850px] overflow-scroll pt-14 px-6">
                     <p className="text-xs">300+ Stays - {range} - for {nOfGuests} number of guests</p>
 
                     <h1 className="text-3xl font-semibold  nb-6">Stays in {location}</h1>
